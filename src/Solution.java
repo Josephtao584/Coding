@@ -21,7 +21,9 @@ class Solution {
         for (StringBuilder row : rows)
             res.append(row);
         return res.toString();
+    }
 
-
+    public static void main(String[] args) {
+        System.out.println(1);
     }
 }
