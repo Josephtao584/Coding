@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 class LRUCache {
-
     class Node {
         Node prev, next;
         int key, val;
