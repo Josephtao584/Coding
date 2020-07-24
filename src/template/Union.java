@@ -1,5 +1,7 @@
 package template;
-
+/*
+ *并查集
+ */
 public class Union {
     public static void union(int[] parent, int index1, int index2) {
         parent[find(parent, index1)] = find(parent, index2);

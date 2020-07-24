@@ -1,5 +1,7 @@
 package template;
-
+/*
+ *快速幂
+ */
 public class NumberPower {
     private int x;
     private NumberPower(int x){

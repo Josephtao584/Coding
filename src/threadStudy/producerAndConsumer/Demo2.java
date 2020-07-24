@@ -14,14 +14,22 @@ public class Demo2 {
     private final Condition notEmpty = lock.newCondition();
     public static void main(String[] args) {
         Demo2 demo2 = new Demo2();
-        new Thread(demo2.new Producer()).start();
-        new Thread(demo2.new Consumer()).start();
-        new Thread(demo2.new Producer()).start();
-        new Thread(demo2.new Consumer()).start();
-        new Thread(demo2.new Producer()).start();
-        new Thread(demo2.new Consumer()).start();
-        new Thread(demo2.new Producer()).start();
-        new Thread(demo2.new Consumer()).start();
+        Thread t1 = new Thread(demo2.new Producer());
+        Thread t2 = new Thread(demo2.new Consumer());
+        Thread t3 = new Thread(demo2.new Producer());
+        Thread t4 = new Thread(demo2.new Consumer());
+        Thread t5 = new Thread(demo2.new Producer());
+        Thread t6 = new Thread(demo2.new Consumer());
+        Thread t7 = new Thread(demo2.new Producer());
+        Thread t8 = new Thread(demo2.new Consumer());
+        t1.start();
+        t2.start();
+        try{
+            t1.join();
+            t2.join();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
     class Producer implements Runnable{
