@@ -12,14 +12,6 @@ import java.util.PriorityQueue;
  * O(nlogn)
  */
 class Dijkstra {
-    class Node{
-        int index;
-        int val;
-        Node(int index, int val){
-            this.index = index;
-            this.val = val;
-        }
-    }
     public double minRood(int n, int[][] edges, int[] val, int start, int end) {
         if(n == 0)
             return 0;
@@ -34,14 +26,13 @@ class Dijkstra {
             g.get(edge[1]).add(new int[]{i, edge[0]});
         }
 
-
         boolean[] visited = new boolean[n];
-        PriorityQueue<Node> queue = new PriorityQueue<>((o1, o2) -> (o1.val - o2.val));
-        queue.offer(new Node(start, 0));
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> (o1[1] - o2[1]));
+        queue.offer(new int[]{start, 0});
         while (!queue.isEmpty()){           //每趟取一个权值最小的节点，然后把所有未遍历的子节点加进来
-            Node cur = queue.poll();
-            int cur_index = cur.index;
-            int cur_val = cur.val;
+            int[] cur = queue.poll();
+            int cur_index = cur[0];
+            int cur_val = cur[1];
             visited[cur_index] = true;
             if(cur_index == end)
                 return cur_val;
@@ -50,7 +41,7 @@ class Dijkstra {
                 int next_index = next[1];
                 if(visited[next[1]])
                     continue;
-                queue.offer(new Node(next_index, next_val + cur_val));
+                queue.offer(new int[]{next_index, next_val + cur_val});
             }
         }
         return -1;
